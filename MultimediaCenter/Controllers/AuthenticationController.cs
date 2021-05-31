@@ -84,7 +84,7 @@ namespace MultimediaCenter.Controllers
                 {
                     var claims = new[] {
                     new Claim(JwtRegisteredClaimNames.Sub, user.UserName)
-                    //new Claim(JwtRegisteredClaimNames.na)
+                    //new Claim(JwtRegisteredClaimNames.)
                 };
                     var signinKey = new SymmetricSecurityKey(
                       Encoding.UTF8.GetBytes(_configuration["Jwt:SigningKey"]));
@@ -106,8 +106,6 @@ namespace MultimediaCenter.Controllers
                           expiration = token.ValidTo
                       });
                 }
-
-
 
             }
             return Unauthorized();

@@ -9,8 +9,8 @@ namespace MultimediaCenter.Models
     {
         public int Id { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
-        public List<Movie> Movies { get; set; }
+        public IEnumerable<Movie> Movies { get; set; }
         public int Price { get; set; }
-        public Boolean Paid { get; set; }
+        public bool Paid { get; set; }
     }
 }

@@ -52,6 +52,8 @@ namespace MultimediaCenter
             services.AddIdentityServer()
                 .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
 
+
+
             services.AddAuthentication()
                 .AddIdentityServerJwt()
                 .AddJwtBearer(options =>
@@ -67,6 +69,10 @@ namespace MultimediaCenter
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SigningKey"]))
                     };
                 });
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             services.AddControllersWithViews()
                 .AddFluentValidation();
             services.AddRazorPages();
@@ -103,7 +109,7 @@ namespace MultimediaCenter
 
             services.AddTransient<IValidator<MovieViewModel>, MovieValidator>();
             services.AddTransient<IValidator<CommentViewModel>, CommentValidator>();
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
